@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fwc_2022/app/core/constants/constants.dart';
+import 'package:fwc_2022/app/core/ui/widgets/fwc_button.dart';
+import 'package:get/get.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
@@ -20,22 +23,14 @@ class SignInPage extends StatelessWidget {
               const SizedBox(
                 height: 40,
               ),
-              SizedBox(
+              FWCButton(
+                label: "ENTRAR COM O GOOGLE",
+                color: Colors.red,
+                width: double.infinity,
                 height: 70,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red,
-                  ),
-                  onPressed: () {},
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Icon(Icons.golf_course),
-                      Text(" ENTRAR COM GOOGLE")
-                    ],
-                  ),
-                ),
+                onPressed: () {
+                  Get.toNamed(Constants.NEW);
+                },
               ),
               const SizedBox(
                 height: 20,

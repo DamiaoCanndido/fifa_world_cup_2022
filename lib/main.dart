@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fwc_2022/app/routes/auth_routes.dart';
+import 'package:fwc_2022/app/routes/bet.dart';
 import 'package:get/get.dart';
 
 import 'app/core/ui/fwc_ui.dart';
@@ -17,7 +18,10 @@ class FWCMainApp extends StatelessWidget {
       title: "Fifa World Cup",
       theme: FWCUI.theme,
       debugShowCheckedModeBanner: false,
-      getPages: [...AuthRouters.routers],
+      getPages: [
+        ...AuthRouters.routers,
+        ...BetRouters.routers,
+      ],
     );
   }
 }
