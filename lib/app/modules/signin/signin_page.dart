@@ -26,6 +26,7 @@ class SignInPage extends StatelessWidget {
               FWCButton(
                 label: "ENTRAR COM O GOOGLE",
                 color: Colors.red,
+                textColor: Colors.white,
                 width: double.infinity,
                 height: 70,
                 onPressed: () {

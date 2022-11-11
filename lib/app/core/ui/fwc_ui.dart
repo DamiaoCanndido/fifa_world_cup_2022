@@ -10,6 +10,10 @@ class FWCUI {
     appBarTheme: const AppBarTheme(
       backgroundColor: Color(0xFF181820),
     ),
+    textTheme: const TextTheme(
+        titleSmall: TextStyle(
+      color: Colors.white,
+    )),
     fontFamily: "Roboto",
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(

@@ -6,6 +6,7 @@ class FWCButton extends StatelessWidget {
   final double? width;
   final double height;
   final Color? color;
+  final Color? textColor;
 
   const FWCButton({
     super.key,
@@ -14,6 +15,7 @@ class FWCButton extends StatelessWidget {
     this.width,
     this.height = 50.0,
     this.color,
+    this.textColor = Colors.black,
   });
 
   @override
@@ -28,9 +30,10 @@ class FWCButton extends StatelessWidget {
         ),
         child: Text(
           label,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.bold,
+            color: textColor,
           ),
         ),
       ),
