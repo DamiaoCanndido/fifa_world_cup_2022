@@ -20,11 +20,12 @@ class FWCUI {
       ),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      selectedItemColor: Colors.black,
-      selectedIconTheme: IconThemeData(color: Colors.black),
+      backgroundColor: Color(0xFF181820),
+      selectedItemColor: Colors.grey,
+      selectedIconTheme: IconThemeData(color: Colors.grey),
       selectedLabelStyle: textBold,
-      unselectedItemColor: Colors.grey,
-      unselectedIconTheme: IconThemeData(color: Colors.grey),
+      unselectedItemColor: Colors.black,
+      unselectedIconTheme: IconThemeData(color: Colors.black),
     ),
   );
 
