@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fwc_2022/app/routes/auth_routers.dart';
+import 'package:fwc_2022/app/routes/find_routers.dart';
+import 'package:fwc_2022/app/routes/guess_routers.dart';
 import 'package:fwc_2022/app/routes/home_routers.dart';
 import 'package:get/get.dart';
 import 'app/core/ui/fwc_ui.dart';
@@ -20,6 +22,8 @@ class FWCMainApp extends StatelessWidget {
       getPages: [
         ...AuthRouters.routers,
         ...HomeRouters.routers,
+        ...FindRouters.routers,
+        ...GuessRouters.routers,
       ],
     );
   }

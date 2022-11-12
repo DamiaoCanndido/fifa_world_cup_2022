@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fwc_2022/app/core/constants/constants.dart';
 import 'package:fwc_2022/app/core/ui/widgets/get_detail.dart';
+import 'package:get/get.dart';
 import '../../core/ui/widgets/fwc_button.dart';
 
 class MyBetPage extends StatelessWidget {
@@ -15,7 +17,9 @@ class MyBetPage extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: FWCButton(
               label: "BUSCAR BOLÃO POR CÓDIGO",
-              onPressed: () {},
+              onPressed: () {
+                Get.toNamed(Constants.FIND);
+              },
               width: double.infinity,
             ),
           ),
@@ -25,7 +29,15 @@ class MyBetPage extends StatelessWidget {
               shrinkWrap: true,
               itemCount: 10,
               itemBuilder: (context, index) {
-                return const GetDetail();
+                return GetDetail(
+                  getName: 'Fifa World Cup',
+                  createdBy: 'Nergal',
+                  picture:
+                      "https://upload.wikimedia.org/wikipedia/pt/3/31/Spain_National_Football_Team_badge.png",
+                  navigate: () {
+                    Get.toNamed(Constants.GUESS);
+                  },
+                );
               },
             ),
           )

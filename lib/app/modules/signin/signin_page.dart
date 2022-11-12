@@ -30,7 +30,7 @@ class SignInPage extends StatelessWidget {
                 width: double.infinity,
                 height: 70,
                 onPressed: () {
-                  Get.toNamed(Constants.HOME);
+                  Get.offNamed(Constants.HOME);
                 },
               ),
               const SizedBox(
