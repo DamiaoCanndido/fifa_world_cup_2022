@@ -45,8 +45,11 @@ class GetDetail extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      createdBy,
-                      style: Theme.of(context).textTheme.titleSmall,
+                      "criado por: $createdBy",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                      ),
                     )
                   ]),
             ),
@@ -64,7 +67,6 @@ class GetDetail extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Center(
                       child: CircleAvatar(
-                        backgroundColor: Colors.transparent,
                         child: Image.network(
                           picture,
                           fit: BoxFit.contain,
