@@ -30,7 +30,7 @@ class GuessPage extends GetView<GuessController> {
               height: 50,
               width: double.infinity,
               padding: const EdgeInsets.all(8),
-              margin: const EdgeInsets.only(top: 100),
+              margin: const EdgeInsets.only(top: 100, left: 8, right: 8),
               child: Row(
                 children: [
                   Expanded(

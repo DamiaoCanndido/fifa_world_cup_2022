@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/utils.dart';
 
 class FWCTextFormField extends StatelessWidget {
   final String label;
@@ -17,6 +16,7 @@ class FWCTextFormField extends StatelessWidget {
   final bool? obscureText;
   final String? initialValue;
   final bool? enabled;
+  final double? widthTextField;
 
   const FWCTextFormField({
     super.key,
@@ -34,49 +34,54 @@ class FWCTextFormField extends StatelessWidget {
     this.initialValue,
     this.enabled = true,
     this.errorText,
+    this.widthTextField = double.infinity,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-      keyboardType: keyboardType,
-      obscureText: obscureText!,
-      textAlign: textAlign!,
-      style: style,
-      autocorrect: false,
-      textInputAction: TextInputAction.done,
-      inputFormatters: inputFormatters,
-      controller: controller,
-      validator: validator,
-      enabled: enabled,
-      initialValue: initialValue,
-      onChanged: onChange,
-      cursorColor: context.theme.primaryColor,
-      decoration: InputDecoration(
-        labelText: label,
-        prefix: prefix,
-        suffix: suffix,
-        isDense: true,
-        errorText: errorText,
-        labelStyle: const TextStyle(
-          color: Colors.white,
+    return SizedBox(
+      width: widthTextField,
+      child: TextFormField(
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        keyboardType: keyboardType,
+        obscureText: obscureText!,
+        textAlign: textAlign!,
+        style: style,
+        autocorrect: false,
+        textInputAction: TextInputAction.done,
+        inputFormatters: inputFormatters,
+        controller: controller,
+        validator: validator,
+        enabled: enabled,
+        initialValue: initialValue,
+        onChanged: onChange,
+        cursorColor: Colors.white,
+        decoration: InputDecoration(
+          focusColor: Colors.white,
+          labelText: label,
+          prefix: prefix,
+          suffix: suffix,
+          isDense: true,
+          errorText: errorText,
+          labelStyle: const TextStyle(
+            color: Colors.white,
+          ),
+          errorStyle: const TextStyle(color: Colors.redAccent),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(2),
+            borderSide: BorderSide(color: Colors.grey[400]!),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(2),
+            borderSide: BorderSide(color: Colors.grey[400]!),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(2),
+            borderSide: BorderSide(color: Colors.grey[400]!),
+          ),
+          filled: true,
+          fillColor: const Color(0xFF090910),
         ),
-        errorStyle: const TextStyle(color: Colors.redAccent),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(2),
-          borderSide: BorderSide(color: Colors.grey[400]!),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(2),
-          borderSide: BorderSide(color: Colors.grey[400]!),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(2),
-          borderSide: BorderSide(color: Colors.grey[400]!),
-        ),
-        filled: true,
-        fillColor: const Color(0xFF090910),
       ),
     );
   }

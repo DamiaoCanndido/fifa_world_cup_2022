@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../../core/constants/constants.dart';
 import '../my_bet/my_bet_binding.dart';
 import '../my_bet/my_bet_page.dart';
-import '../new_bet/new_bet-binding.dart';
+import '../new_bet/new_bet_binding.dart';
 import '../new_bet/new_bet_page.dart';
 
 class HomeController extends GetxController {

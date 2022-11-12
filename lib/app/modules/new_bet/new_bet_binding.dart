@@ -1,5 +1,5 @@
-import 'package:fwc_2022/app/modules/new_bet/new_bet_controller.dart';
 import 'package:get/get.dart';
+import 'new_bet_controller.dart';
 
 class NewBetBinding implements Bindings {
   @override
