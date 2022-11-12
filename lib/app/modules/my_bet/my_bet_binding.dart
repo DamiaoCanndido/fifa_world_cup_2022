@@ -4,6 +4,6 @@ import 'package:get/get.dart';
 class MyBetBinding implements Bindings {
   @override
   void dependencies() {
-    Get.put(() => MyBetController());
+    Get.put(MyBetController());
   }
 }
