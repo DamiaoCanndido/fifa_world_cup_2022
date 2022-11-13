@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:fwc_2022/app/core/bindings/application_bindings.dart';
 import 'package:fwc_2022/app/routes/auth_routers.dart';
 import 'package:fwc_2022/app/routes/find_routers.dart';
 import 'package:fwc_2022/app/routes/guess_routers.dart';
@@ -22,6 +23,7 @@ class FWCMainApp extends StatelessWidget {
     return GetMaterialApp(
       title: "Fifa World Cup",
       theme: FWCUI.theme,
+      initialBinding: ApplicationBinding(),
       debugShowCheckedModeBanner: false,
       getPages: [
         ...AuthRouters.routers,
