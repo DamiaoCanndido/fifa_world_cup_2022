@@ -1,4 +1,3 @@
-import 'package:flag/flag.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fwc_2022/app/core/ui/widgets/fwc_button.dart';
@@ -24,20 +23,17 @@ class GuessesList extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 1,
-                  child: Container(
-                    child: Center(
-                      child: Text(
-                        "Brasil vs Sérvia\n 12 de Novembro de 2022 as 16:00",
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.titleSmall,
-                      ),
+                  child: Center(
+                    child: Text(
+                      "Brasil vs Sérvia\n 12 de Novembro de 2022 as 16:00",
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.titleSmall,
                     ),
                   ),
                 ),
                 Expanded(
                   flex: 1,
-                  child: Container(
-                      child: Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       FWCTextFormField(
@@ -46,8 +42,10 @@ class GuessesList extends StatelessWidget {
                         style: const TextStyle(
                           color: Colors.white,
                         ),
+                        keyboardType: TextInputType.number,
                         textAlign: TextAlign.center,
                         inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
                           FilteringTextInputFormatter.allow(
                             RegExp(r'^\d+\.?\d{0,1}'),
                           )
@@ -77,18 +75,20 @@ class GuessesList extends StatelessWidget {
                       FWCTextFormField(
                         label: "",
                         widthTextField: 50,
+                        keyboardType: TextInputType.number,
                         style: const TextStyle(
                           color: Colors.white,
                         ),
                         textAlign: TextAlign.center,
                         inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
                           FilteringTextInputFormatter.allow(
                             RegExp(r'^\d+\.?\d{0,1}'),
                           )
                         ],
                       ),
                     ],
-                  )),
+                  ),
                 ),
                 Expanded(
                   flex: 1,

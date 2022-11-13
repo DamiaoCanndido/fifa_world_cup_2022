@@ -40,7 +40,6 @@ dependencies:
   flutter_native_splash: ^2.2.14
   get: ^4.6.5
   flutter_svg: ^1.1.6
-  flag: ^6.0.0
   country_icons: ^2.0.2
 
 flutter_native_splash:
