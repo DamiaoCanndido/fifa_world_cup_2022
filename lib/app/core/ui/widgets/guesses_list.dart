@@ -38,7 +38,8 @@ class GuessesList extends StatelessWidget {
                     children: [
                       FWCTextFormField(
                         label: "",
-                        widthTextField: 50,
+                        widthTextField: 40,
+                        heightTextField: 40,
                         style: const TextStyle(
                           color: Colors.white,
                         ),
@@ -54,27 +55,32 @@ class GuessesList extends StatelessWidget {
                       Image.asset(
                         'icons/flags/png/br.png',
                         package: 'country_icons',
-                        height: 50,
+                        height: 40,
                       ),
-                      const SizedBox(
-                        height: 60,
-                        width: 60,
-                        child: Text(""),
+                      const Text(
+                        "",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                        ),
                       ),
                       const Icon(Icons.clear_rounded, color: Colors.white),
-                      const SizedBox(
-                        height: 60,
-                        width: 60,
-                        child: Text(""),
+                      const Text(
+                        "",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                        ),
                       ),
                       Image.asset(
                         'icons/flags/png/rs.png',
                         package: 'country_icons',
-                        height: 50,
+                        height: 40,
                       ),
                       FWCTextFormField(
                         label: "",
-                        widthTextField: 50,
+                        widthTextField: 40,
+                        heightTextField: 40,
                         keyboardType: TextInputType.number,
                         style: const TextStyle(
                           color: Colors.white,

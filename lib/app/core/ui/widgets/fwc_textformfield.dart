@@ -17,6 +17,7 @@ class FWCTextFormField extends StatelessWidget {
   final String? initialValue;
   final bool? enabled;
   final double? widthTextField;
+  final double? heightTextField;
 
   const FWCTextFormField({
     super.key,
@@ -35,12 +36,14 @@ class FWCTextFormField extends StatelessWidget {
     this.enabled = true,
     this.errorText,
     this.widthTextField = double.infinity,
+    this.heightTextField,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: widthTextField,
+      height: heightTextField,
       child: TextFormField(
         autovalidateMode: AutovalidateMode.onUserInteraction,
         keyboardType: keyboardType,

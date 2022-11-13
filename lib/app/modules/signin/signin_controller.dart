@@ -15,7 +15,7 @@ class SignInController extends GetxController with LoaderMixin {
 
   Future<void> signIn() async {
     final user = await GoogleSignInAPI.login();
-    debugPrint(user!.id);
+    debugPrint(user!.toString());
 
     Get.offNamed(Constants.HOME);
   }
