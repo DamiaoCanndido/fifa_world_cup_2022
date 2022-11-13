@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fwc_2022/app/core/constants/constants.dart';
 import 'package:fwc_2022/app/core/ui/widgets/fwc_button.dart';
+import 'package:fwc_2022/app/modules/signin/signin_controller.dart';
 import 'package:get/get.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends GetView<SignInController> {
   const SignInPage({super.key});
 
   @override
