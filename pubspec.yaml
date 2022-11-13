@@ -44,6 +44,7 @@ dependencies:
   loading_animation_widget: ^1.2.0+3
   flutter_dotenv: ^5.0.2
   get_storage: ^2.0.3
+  google_sign_in: ^5.4.2
 
 flutter_native_splash:
   background_image: assets/images/splash.png

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fwc_2022/app/core/constants/constants.dart';
 import 'package:fwc_2022/app/core/ui/widgets/fwc_button.dart';
 import 'package:fwc_2022/app/modules/signin/signin_controller.dart';
 import 'package:get/get.dart';
@@ -30,9 +29,7 @@ class SignInPage extends GetView<SignInController> {
                 textColor: Colors.white,
                 width: double.infinity,
                 height: 70,
-                onPressed: () {
-                  Get.offNamed(Constants.HOME);
-                },
+                onPressed: controller.signIn,
               ),
               const SizedBox(
                 height: 20,
