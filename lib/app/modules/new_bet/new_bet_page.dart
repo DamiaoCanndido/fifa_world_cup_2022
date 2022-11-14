@@ -56,7 +56,10 @@ class NewBetPage extends GetView<NewBetController> {
                 label: "CRIAR SEU BOLÃO",
                 onPressed: () {
                   final formState = _formKey.currentState!.validate();
-                  if (formState) {}
+                  if (formState) {
+                    controller.createBet(_newBetEC.text);
+                    _newBetEC.clear();
+                  }
                 },
                 width: double.infinity,
               ),

@@ -14,7 +14,7 @@ mixin LoaderMixin on GetxController {
           barrierDismissible: false,
         );
       } else {
-        Get.back(closeOverlays: true);
+        Get.back();
       }
     });
   }
