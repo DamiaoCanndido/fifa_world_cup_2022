@@ -23,12 +23,12 @@ class UserModel {
 class User {
   User({
     required this.name,
-    this.avatarUrl,
+    required this.avatarUrl,
     required this.sub,
   });
 
   String name;
-  String? avatarUrl;
+  String avatarUrl;
   String sub;
 
   factory User.fromMap(Map<String, dynamic> json) => User(

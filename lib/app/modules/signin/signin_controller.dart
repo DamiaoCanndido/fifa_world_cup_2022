@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'package:flutter/material.dart';
 import 'package:fwc_2022/app/core/constants/constants.dart';
 import 'package:fwc_2022/app/core/services/google_services.dart';
 import 'package:fwc_2022/app/core/ui/mixins/loader.dart';
@@ -36,18 +35,10 @@ class SignInController extends GetxController with LoaderMixin {
     try {
       final user = await GoogleSignInAPI.login();
 
-      final bearer = await GoogleSignInAPI.getAccessToken(user);
-      debugPrint(bearer);
+      final token = await GoogleSignInAPI.getAccessToken(user);
 
       _loading.toggle();
-      final userLogged = await _authRepository.signin(
-        user!.id,
-        user.displayName,
-        user.email,
-        user.photoUrl,
-      );
-
-      // user.authHeaders.then((value) => debugPrint(value.values.first));
+      final userLogged = await _authRepository.signin(token);
 
       final storage = GetStorage();
       storage.write(Constants.USER_TOKEN, userLogged.token);
@@ -55,6 +46,7 @@ class SignInController extends GetxController with LoaderMixin {
       _loading.toggle();
     } on RestClientException catch (e, s) {
       log(e.message, error: e, stackTrace: s);
+      AuthService.logout();
     } catch (e, s) {
       log("Erro ao logar no google", error: e, stackTrace: s);
       AuthService.logout();

@@ -16,13 +16,9 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<TokenModel> signin(
-      String id, String? displayName, String email, String? photoUrl) async {
+  Future<TokenModel> signin(String accessToken) async {
     final response = await _restClient.post("/users", {
-      "id": id,
-      "displayName": displayName,
-      "email": email,
-      "photoUrl": photoUrl
+      "access_token": accessToken,
     });
 
     if (response.hasError) {
