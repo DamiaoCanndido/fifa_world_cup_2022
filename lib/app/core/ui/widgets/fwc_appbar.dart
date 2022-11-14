@@ -9,5 +9,6 @@ class FWCAppBar extends AppBar {
     super.centerTitle = true,
     super.iconTheme = const IconThemeData(color: Colors.white),
     super.bottom,
+    super.actions,
   });
 }

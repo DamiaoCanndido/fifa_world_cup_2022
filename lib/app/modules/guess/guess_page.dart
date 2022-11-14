@@ -15,6 +15,15 @@ class GuessPage extends GetView<GuessController> {
       appBar: FWCAppBar(
         centerTitle: true,
         title: const Text("Bolão"),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: InkWell(
+              child: const Icon(Icons.share),
+              onTap: () {},
+            ),
+          )
+        ],
       ),
       body: Obx(
         () => Stack(
