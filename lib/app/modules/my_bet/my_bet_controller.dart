@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:fwc_2022/app/core/ui/mixins/loader.dart';
 import 'package:get/get.dart';
 import '../../models/bet_model.dart';

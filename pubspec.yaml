@@ -46,6 +46,7 @@ dependencies:
   flutter_dotenv: ^5.0.2
   get_storage: ^2.0.3
   google_sign_in: ^5.4.2
+  intl: ^0.17.0
 
 flutter_native_splash:
   background_image: assets/images/splash.png

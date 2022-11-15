@@ -79,7 +79,7 @@ class GuessPage extends GetView<GuessController> {
               ),
             ),
             controller.activePage == "guesses"
-                ? const GuessesList()
+                ? GuessesList(guesses: controller.guesses)
                 : const RankingList()
           ],
         ),

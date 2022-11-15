@@ -1,6 +1,4 @@
 import 'dart:developer';
-
-import 'package:flutter/cupertino.dart';
 import 'package:fwc_2022/app/core/ui/mixins/loader.dart';
 import 'package:get/get.dart';
 import '../../core/ui/mixins/message.dart';
@@ -51,7 +49,6 @@ class GuessController extends GetxController with LoaderMixin, MessagesMixin {
 
   Future<void> getMyGuesses() async {
     final allGuesses = await _guessRepository.getMyGuesses(betModel.id);
-    debugPrint(allGuesses.length.toString());
     guesses.assignAll(allGuesses);
   }
 

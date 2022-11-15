@@ -16,6 +16,7 @@ class GuessModel {
     required this.firstTeamCountryCode,
     required this.secondTeamCountryCode,
     this.guess,
+    required this.isExpired,
   });
 
   String id;
@@ -23,14 +24,15 @@ class GuessModel {
   String firstTeamCountryCode;
   String secondTeamCountryCode;
   Guess? guess;
+  bool isExpired;
 
   factory GuessModel.fromMap(Map<String, dynamic> json) => GuessModel(
-        id: json["id"],
-        date: DateTime.parse(json["date"]),
-        firstTeamCountryCode: json["firstTeamCountryCode"],
-        secondTeamCountryCode: json["secondTeamCountryCode"],
-        guess: json["guess"] != null ? Guess.fromMap(json["guess"]) : null,
-      );
+      id: json["id"],
+      date: DateTime.parse(json["date"]),
+      firstTeamCountryCode: json["firstTeamCountryCode"],
+      secondTeamCountryCode: json["secondTeamCountryCode"],
+      guess: json["guess"] != null ? Guess.fromMap(json["guess"]) : null,
+      isExpired: json["isExpired"]);
 
   Map<String, dynamic> toMap() => {
         "id": id,
@@ -38,6 +40,7 @@ class GuessModel {
         "firstTeamCountryCode": firstTeamCountryCode,
         "secondTeamCountryCode": secondTeamCountryCode,
         "guess": guess?.toMap(),
+        "isExpired": isExpired,
       };
 }
 
@@ -52,8 +55,8 @@ class Guess {
   });
 
   String id;
-  String firstTeamPoints;
-  String secondTeamPoints;
+  int firstTeamPoints;
+  int secondTeamPoints;
   DateTime createdAt;
   String gameId;
   String participantId;
