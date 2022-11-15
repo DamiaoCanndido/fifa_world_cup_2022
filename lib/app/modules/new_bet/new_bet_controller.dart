@@ -1,11 +1,14 @@
 import 'package:fwc_2022/app/core/ui/mixins/loader.dart';
 import 'package:fwc_2022/app/core/ui/mixins/message.dart';
+import 'package:fwc_2022/app/modules/my_bet/my_bet_controller.dart';
 import 'package:get/get.dart';
 import '../../core/rest_client/rest_client.dart';
 import '../../repository/bet/bet_repository.dart';
 
 class NewBetController extends GetxController with LoaderMixin, MessagesMixin {
   final BetRepository _betRepository;
+
+  final myBets = Get.find<MyBetController>();
 
   NewBetController({required BetRepository betRepository})
       : _betRepository = betRepository;
@@ -32,6 +35,7 @@ class NewBetController extends GetxController with LoaderMixin, MessagesMixin {
     try {
       _loading.toggle();
       await _betRepository.createBet(title.trim());
+      await myBets.getMyBets();
       _loading.toggle();
 
       _message(MessageModel(

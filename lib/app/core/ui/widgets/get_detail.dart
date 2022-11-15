@@ -51,6 +51,7 @@ class GetDetail extends StatelessWidget {
                   ]),
             ),
             Container(
+              margin: const EdgeInsets.all(16),
               color: Colors.black,
               height: 80,
               width: 200,
@@ -63,12 +64,14 @@ class GetDetail extends StatelessWidget {
                   itemCount: betModel.participants.length,
                   itemBuilder: (context, index) {
                     final participants = betModel.participants[index];
-                    return CircleAvatar(
-                      child: Image.network(
-                        participants.user.avatarUrl,
-                        fit: BoxFit.contain,
-                        width: 70,
-                        height: 70,
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 4),
+                      child: ClipOval(
+                        child: Image.network(
+                          isAntiAlias: true,
+                          fit: BoxFit.cover,
+                          participants.user.avatarUrl,
+                        ),
                       ),
                     );
                   },

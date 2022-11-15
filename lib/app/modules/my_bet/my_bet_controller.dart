@@ -41,4 +41,16 @@ class MyBetController extends GetxController with LoaderMixin {
     final allLeagues = await _betRepository.getMyBets();
     bets.assignAll(allLeagues);
   }
+
+  Future<void> refreshPage() async {
+    try {
+      getMyBets();
+    } catch (e, s) {
+      log(
+        'Erro ao buscar bolões',
+        error: e,
+        stackTrace: s,
+      );
+    }
+  }
 }

@@ -46,16 +46,13 @@ class SignInController extends GetxController with LoaderMixin {
       storage.write(Constants.USER_TOKEN, userLogged.token);
 
       _loading.toggle();
+      Get.offNamed(Constants.HOME);
     } on RestClientException catch (e, s) {
       log(e.message, error: e, stackTrace: s);
       AuthService.logout();
     } catch (e, s) {
       log("Erro ao logar no google", error: e, stackTrace: s);
       AuthService.logout();
-    } finally {
-      _loading.toggle();
     }
-
-    Get.offNamed(Constants.HOME);
   }
 }

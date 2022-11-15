@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-
 import '../../models/bet_model.dart';
 
 class GuessController extends GetxController {

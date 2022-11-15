@@ -24,27 +24,40 @@ class MyBetPage extends GetView<MyBetController> {
               width: double.infinity,
             ),
           ),
-          Container(
-            margin: const EdgeInsets.only(top: 70),
-            child: Obx(
-              () => ListView.builder(
-                shrinkWrap: true,
-                itemCount: controller.bets.length,
-                itemBuilder: (context, index) {
-                  final myBets = controller.bets[index];
-                  return GetDetail(
-                    betModel: myBets,
-                    navigate: () {
-                      Get.toNamed(
-                        Constants.GUESS,
-                        arguments: {"betModel": myBets},
-                      );
-                    },
-                  );
-                },
-              ),
-            ),
-          )
+          Obx(
+            () => controller.bets.isEmpty
+                ? Container(
+                    margin: const EdgeInsets.only(top: 70),
+                    child: const Text(
+                      "Nenhum bolão",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  )
+                : Container(
+                    margin: const EdgeInsets.only(top: 70),
+                    child: Obx(
+                      () => ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: controller.bets.length,
+                        itemBuilder: (context, index) {
+                          final myBets = controller.bets[index];
+                          return GetDetail(
+                            betModel: myBets,
+                            navigate: () {
+                              Get.toNamed(
+                                Constants.GUESS,
+                                arguments: {"betModel": myBets},
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+          ),
         ],
       ),
     );
