@@ -15,6 +15,8 @@ class GuessModel {
     required this.date,
     required this.firstTeamCountryCode,
     required this.secondTeamCountryCode,
+    this.firstTeamPoints,
+    this.secondTeamPoints,
     this.guess,
     required this.isExpired,
   });
@@ -23,6 +25,8 @@ class GuessModel {
   DateTime date;
   String firstTeamCountryCode;
   String secondTeamCountryCode;
+  int? firstTeamPoints;
+  int? secondTeamPoints;
   Guess? guess;
   bool isExpired;
 
@@ -32,7 +36,9 @@ class GuessModel {
       firstTeamCountryCode: json["firstTeamCountryCode"],
       secondTeamCountryCode: json["secondTeamCountryCode"],
       guess: json["guess"] != null ? Guess.fromMap(json["guess"]) : null,
-      isExpired: json["isExpired"]);
+      isExpired: json["isExpired"],
+      firstTeamPoints: json["firstTeamPoints"],
+      secondTeamPoints: json["secondTeamPoints"]);
 
   Map<String, dynamic> toMap() => {
         "id": id,
@@ -41,6 +47,8 @@ class GuessModel {
         "secondTeamCountryCode": secondTeamCountryCode,
         "guess": guess?.toMap(),
         "isExpired": isExpired,
+        "firstTeamPoints": firstTeamPoints,
+        "secondTeamPoints": secondTeamPoints
       };
 }
 
@@ -49,6 +57,7 @@ class Guess {
     required this.id,
     required this.firstTeamPoints,
     required this.secondTeamPoints,
+    required this.points,
     required this.createdAt,
     required this.gameId,
     required this.participantId,
@@ -57,6 +66,7 @@ class Guess {
   String id;
   int firstTeamPoints;
   int secondTeamPoints;
+  int points;
   DateTime createdAt;
   String gameId;
   String participantId;
@@ -68,6 +78,7 @@ class Guess {
         createdAt: DateTime.parse(json["createdAt"]),
         gameId: json["gameId"],
         participantId: json["participantId"],
+        points: json["points"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -77,5 +88,6 @@ class Guess {
         "createdAt": createdAt.toIso8601String(),
         "gameId": gameId,
         "participantId": participantId,
+        "points": points,
       };
 }

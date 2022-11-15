@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fwc_2022/app/core/constants/constants.dart';
+import 'package:fwc_2022/app/core/ui/widgets/empty_lists.dart';
 import 'package:fwc_2022/app/core/ui/widgets/get_detail.dart';
 import 'package:fwc_2022/app/modules/my_bet/my_bet_controller.dart';
 import 'package:get/get.dart';
@@ -26,15 +27,9 @@ class MyBetPage extends GetView<MyBetController> {
           ),
           Obx(
             () => controller.bets.isEmpty
-                ? Container(
-                    margin: const EdgeInsets.only(top: 70),
-                    child: const Text(
-                      "Nenhum bolão",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
+                ? const EmptyLists(
+                    margin: 70,
+                    message: "Você não está em nenhum bolão ainda",
                   )
                 : Container(
                     margin: const EdgeInsets.only(top: 70),
