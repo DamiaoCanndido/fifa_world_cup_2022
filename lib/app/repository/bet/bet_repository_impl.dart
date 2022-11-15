@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:fwc_2022/app/core/services/auth_services.dart';
+import 'package:fwc_2022/app/models/bet_created_model.dart';
 import 'package:fwc_2022/app/models/bet_model.dart';
 import 'package:fwc_2022/app/repository/bet/bet_repository.dart';
 import '../../core/rest_client/rest_client.dart';
@@ -35,5 +36,29 @@ class BetRepositoryImpl implements BetRepository {
     }
 
     return BetCreatedModel.fromMap(response.body);
+  }
+
+  @override
+  Future<List<BetModel>> getMyBets() async {
+    final token = AuthService.getUserAccessToken();
+
+    final response = await _restClient.get("/pools", headers: {
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer $token",
+    });
+
+    if (response.hasError) {
+      log(
+        'Erro ao buscar bolões ${response.body["statusCode"]}',
+        error: response.statusText,
+        stackTrace: StackTrace.current,
+      );
+
+      AuthService.logout();
+
+      throw RestClientException(response.body["error"]);
+    }
+
+    return response.body.map<BetModel>((bet) => BetModel.fromMap(bet)).toList();
   }
 }

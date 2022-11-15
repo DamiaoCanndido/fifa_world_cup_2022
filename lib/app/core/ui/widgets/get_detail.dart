@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:fwc_2022/app/models/bet_model.dart';
 
 class GetDetail extends StatelessWidget {
   const GetDetail({
     super.key,
-    required this.getName,
-    required this.createdBy,
-    required this.picture,
     this.navigate,
+    required this.betModel,
   });
 
-  final String getName;
-  final String createdBy;
-  final String picture; // change to model
+  final BetModel betModel;
   final VoidCallback? navigate;
 
   @override
@@ -34,7 +31,7 @@ class GetDetail extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      getName,
+                      betModel.title,
                       style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -45,7 +42,7 @@ class GetDetail extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      "criado por: $createdBy",
+                      "criado por: ${betModel.owner.name}",
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 12,
@@ -63,16 +60,15 @@ class GetDetail extends StatelessWidget {
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   primary: false,
-                  itemCount: 10,
+                  itemCount: betModel.participants.length,
                   itemBuilder: (context, index) {
-                    return Center(
-                      child: CircleAvatar(
-                        child: Image.network(
-                          picture,
-                          fit: BoxFit.contain,
-                          width: 70,
-                          height: 70,
-                        ),
+                    final participants = betModel.participants[index];
+                    return CircleAvatar(
+                      child: Image.network(
+                        participants.user.avatarUrl,
+                        fit: BoxFit.contain,
+                        width: 70,
+                        height: 70,
                       ),
                     );
                   },

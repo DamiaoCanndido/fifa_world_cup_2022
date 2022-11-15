@@ -28,11 +28,8 @@ class GuessPage extends GetView<GuessController> {
       body: Obx(
         () => Stack(
           children: [
-            const GetDetail(
-              getName: "Bolao",
-              createdBy: "Nergal",
-              picture:
-                  "https://upload.wikimedia.org/wikipedia/pt/3/31/Spain_National_Football_Team_badge.png",
+            GetDetail(
+              betModel: controller.betModel,
             ),
             Container(
               color: const Color.fromARGB(255, 49, 48, 48),
