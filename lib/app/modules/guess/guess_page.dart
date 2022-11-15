@@ -14,7 +14,7 @@ class GuessPage extends GetView<GuessController> {
     return Scaffold(
       appBar: FWCAppBar(
         centerTitle: true,
-        title: const Text("Bolão"),
+        title: Text(controller.betModel.title),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 16),
