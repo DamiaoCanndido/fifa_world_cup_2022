@@ -18,12 +18,12 @@ class HomePage extends GetView<HomeController> {
         () => BottomNavigationBar(
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.shield_outlined),
-              label: "Criar",
-            ),
-            BottomNavigationBarItem(
               icon: Icon(Icons.shield_rounded),
               label: "Bolões",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shield_outlined),
+              label: "Criar",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.exit_to_app),
@@ -37,7 +37,7 @@ class HomePage extends GetView<HomeController> {
         ),
       ),
       body: Navigator(
-        initialRoute: Constants.NEW,
+        initialRoute: Constants.MY,
         key: Get.nestedKey(HomeController.NAVIGATOR_KEY),
         onGenerateRoute: controller.onGenerateRouter,
       ),

@@ -13,7 +13,7 @@ class HomeController extends GetxController {
   final _tabIndex = 0.obs;
   int get tabIndex => _tabIndex.value;
 
-  final _tabs = [Constants.NEW, Constants.MY, Constants.LOGOUT];
+  final _tabs = [Constants.MY, Constants.NEW, Constants.LOGOUT];
 
   set setTabIndex(int index) {
     _tabIndex(index);

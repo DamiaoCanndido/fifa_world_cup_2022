@@ -3,7 +3,7 @@ class TeamServices {
 
   static String teamName(String code) {
     Map<String, String> teams = {
-      "QA": "Qatar",
+      "QA": "Catar",
       "EC": "Equador",
       "SN": "Senegal",
       "NL": "Holanda",
