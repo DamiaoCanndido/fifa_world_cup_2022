@@ -20,13 +20,14 @@ class GuessRepositoryImpl implements GuessRepository {
     });
 
     if (response.hasError) {
+      if (response.statusCode == 401) {
+        AuthService.logout();
+      }
       log(
         'Erro ao buscar jogos e palpites ${response.body["statusCode"]}',
         error: response.statusText,
         stackTrace: StackTrace.current,
       );
-
-      AuthService.logout();
 
       throw RestClientException(response.body["error"]);
     }
@@ -34,5 +35,39 @@ class GuessRepositoryImpl implements GuessRepository {
     return response.body
         .map<GuessModel>((guess) => GuessModel.fromMap(guess))
         .toList();
+  }
+
+  @override
+  Future<String> createGuess(
+    String betId,
+    String gameId,
+    int firstTeamPoints,
+    int secondTeamPoints,
+  ) async {
+    final token = AuthService.getUserAccessToken();
+
+    final response =
+        await _restClient.post("/pools/$betId/games/$gameId/guesses", headers: {
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer $token",
+    }, {
+      "firstTeamPoints": firstTeamPoints,
+      "secondTeamPoints": secondTeamPoints
+    });
+
+    if (response.hasError) {
+      if (response.statusCode == 401) {
+        AuthService.logout();
+      }
+      log(
+        'Erro ao enviar palpite ${response.body["statusCode"]}',
+        error: response.statusText,
+        stackTrace: StackTrace.current,
+      );
+
+      throw RestClientException(response.body["error"]);
+    }
+
+    return "Palpite enviado com sucesso!";
   }
 }

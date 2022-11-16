@@ -10,12 +10,6 @@ class AuthRepositoryImpl implements AuthRepository {
       : _restClient = restClient;
 
   @override
-  Future<UserModel> getMe(String accessToken) {
-    // TODO: implement getMe
-    throw UnimplementedError();
-  }
-
-  @override
   Future<TokenModel> signin(String accessToken) async {
     final response = await _restClient.post("/users", {
       "access_token": accessToken,

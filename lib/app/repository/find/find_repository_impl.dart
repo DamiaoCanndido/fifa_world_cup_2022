@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import '../../core/rest_client/rest_client.dart';
 import '../../core/services/auth_services.dart';
 import 'find_repository.dart';
@@ -22,6 +21,9 @@ class FindRepositoryImpl implements FindRepository {
     });
 
     if (response.hasError) {
+      if (response.statusCode == 401) {
+        AuthService.logout();
+      }
       log(
         'Erro ao entrar no bolão ${response.body["statusCode"]}',
         error: response.statusText,

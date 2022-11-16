@@ -17,8 +17,6 @@ class GueessCreate extends GetView<GuessCreateController> {
     final _firstTeamPointsEC = TextEditingController();
     final _secondTeamPointsEC = TextEditingController();
 
-    debugPrint(controller.betController.betModel.title);
-
     return Scaffold(
       appBar: FWCAppBar(
         centerTitle: false,
@@ -53,8 +51,6 @@ class GueessCreate extends GetView<GuessCreateController> {
             SizedBox(
               height: 90,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
                     flex: 2,
@@ -65,8 +61,12 @@ class GueessCreate extends GetView<GuessCreateController> {
                   ),
                   FWCTextFormField(
                     label: "",
-                    widthTextField: 50,
-                    heightTextField: 50,
+                    controller: _firstTeamPointsEC,
+                    validator: (value) {
+                      return controller.validateFirstTeamPoints(value);
+                    },
+                    widthTextField: 60,
+                    heightTextField: 60,
                     style: const TextStyle(
                       color: Colors.white,
                     ),
@@ -92,8 +92,12 @@ class GueessCreate extends GetView<GuessCreateController> {
                   ),
                   FWCTextFormField(
                     label: "",
-                    widthTextField: 50,
-                    heightTextField: 50,
+                    controller: _secondTeamPointsEC,
+                    validator: (value) {
+                      return controller.validateSecondTeamPoints(value);
+                    },
+                    widthTextField: 60,
+                    heightTextField: 60,
                     style: const TextStyle(
                       color: Colors.white,
                     ),
@@ -121,7 +125,15 @@ class GueessCreate extends GetView<GuessCreateController> {
               child: FWCButton(
                 label: "ENVIAR",
                 width: double.infinity,
-                onPressed: () {},
+                onPressed: () {
+                  final formState = _formKey.currentState!.validate();
+                  if (formState) {
+                    controller.createGuess(
+                      _firstTeamPointsEC.text,
+                      _secondTeamPointsEC.text,
+                    );
+                  }
+                },
                 textColor: Colors.white,
                 color: Colors.green,
               ),

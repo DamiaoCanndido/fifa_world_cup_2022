@@ -23,7 +23,7 @@ class BetRepositoryImpl implements BetRepository {
     });
 
     if (response.hasError) {
-      if (response.body["statusCode"] == 401) {
+      if (response.statusCode == 401) {
         AuthService.logout();
       }
       log(
@@ -48,13 +48,14 @@ class BetRepositoryImpl implements BetRepository {
     });
 
     if (response.hasError) {
+      if (response.statusCode == 401) {
+        AuthService.logout();
+      }
       log(
         'Erro ao buscar bolões ${response.body["statusCode"]}',
         error: response.statusText,
         stackTrace: StackTrace.current,
       );
-
-      AuthService.logout();
 
       throw RestClientException(response.body["error"]);
     }

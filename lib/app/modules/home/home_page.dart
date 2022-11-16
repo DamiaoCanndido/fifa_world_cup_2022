@@ -19,11 +19,11 @@ class HomePage extends GetView<HomeController> {
           items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.shield_outlined),
-              label: "Ligas",
+              label: "Criar",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.shield_rounded),
-              label: "Minhas",
+              label: "Bolões",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.exit_to_app),
