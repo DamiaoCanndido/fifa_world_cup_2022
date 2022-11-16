@@ -8,6 +8,7 @@ class Constants {
   static const String MY = "/my";
   static const String FIND = "/find";
   static const String GUESS = "/guess";
+  static const String GUESS_CREATE = "/guess/create";
 
   static const String USER_TOKEN = "/user_token";
 }

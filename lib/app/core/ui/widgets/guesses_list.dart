@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fwc_2022/app/core/constants/constants.dart';
 import 'package:fwc_2022/app/core/ui/widgets/fwc_button.dart';
 import 'package:fwc_2022/app/core/ui/widgets/fwc_textformfield.dart';
 import 'package:fwc_2022/app/models/guess_model.dart';
@@ -7,7 +8,6 @@ import 'package:fwc_2022/app/modules/guess/guess_controller.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
-
 import '../../services/team_services.dart';
 import 'empty_lists.dart';
 
@@ -19,6 +19,7 @@ class GuessesList extends GetView<GuessController> {
   @override
   Widget build(BuildContext context) {
     initializeDateFormatting('pt_BR', null);
+
     return Obx(
       () => guesses.isEmpty
           ? const EmptyLists(
@@ -54,22 +55,6 @@ class GuessesList extends GetView<GuessController> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              FWCTextFormField(
-                                label: "",
-                                widthTextField: 40,
-                                heightTextField: 40,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                ),
-                                keyboardType: TextInputType.number,
-                                textAlign: TextAlign.center,
-                                inputFormatters: [
-                                  FilteringTextInputFormatter.digitsOnly,
-                                  FilteringTextInputFormatter.allow(
-                                    RegExp(r'^\d+\.?\d{0,1}'),
-                                  )
-                                ],
-                              ),
                               Image.asset(
                                 'icons/flags/png/${guess.firstTeamCountryCode.toLowerCase()}.png',
                                 package: 'country_icons',
@@ -102,22 +87,6 @@ class GuessesList extends GetView<GuessController> {
                                 height: 30,
                                 width: 40,
                               ),
-                              FWCTextFormField(
-                                label: "",
-                                widthTextField: 40,
-                                heightTextField: 40,
-                                keyboardType: TextInputType.number,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                ),
-                                textAlign: TextAlign.center,
-                                inputFormatters: [
-                                  FilteringTextInputFormatter.digitsOnly,
-                                  FilteringTextInputFormatter.allow(
-                                    RegExp(r'^\d+\.?\d{0,1}'),
-                                  )
-                                ],
-                              ),
                             ],
                           ),
                         ),
@@ -140,9 +109,14 @@ class GuessesList extends GetView<GuessController> {
                                         color: Colors.green,
                                       )
                                     : FWCButton(
-                                        label: "ENVIAR PALPITE",
+                                        label: "ENTRAR",
                                         width: double.infinity,
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Get.toNamed(
+                                            Constants.GUESS_CREATE,
+                                            arguments: {"guess": guess},
+                                          );
+                                        },
                                         textColor: Colors.white,
                                         color: Colors.green,
                                       ),
