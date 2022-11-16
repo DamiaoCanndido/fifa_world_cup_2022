@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import '../core/constants/constants.dart';
 import '../modules/guess/guess_binding.dart';
+import '../core/constants/constants.dart';
 import '../modules/guess/guess_page.dart';
 import '../modules/guess_create/guess_create_binding.dart';
 import '../modules/guess_create/guess_create_page.dart';
