@@ -69,7 +69,6 @@ android {
             signingConfig signingConfigs.debug
         }
     }
-    namespace 'br.com.damiaocanndido.fwc_2022'
 }
 
 flutter {
