@@ -5,6 +5,7 @@ import 'package:fwc_2022/app/routes/auth_routers.dart';
 import 'package:fwc_2022/app/routes/find_routers.dart';
 import 'package:fwc_2022/app/routes/guess_routers.dart';
 import 'package:fwc_2022/app/routes/home_routers.dart';
+import 'package:fwc_2022/app/routes/splash_router.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'app/core/ui/fwc_ui.dart';
@@ -26,6 +27,7 @@ class FWCMainApp extends StatelessWidget {
       initialBinding: ApplicationBinding(),
       debugShowCheckedModeBanner: false,
       getPages: [
+        ...SplashRouters.routers,
         ...AuthRouters.routers,
         ...HomeRouters.routers,
         ...FindRouters.routers,

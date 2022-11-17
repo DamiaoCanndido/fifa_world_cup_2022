@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:fwc_2022/app/models/guess_model.dart';
 import 'package:fwc_2022/app/repository/guess/guess_repository.dart';
+import 'package:get/get.dart';
 import '../../core/rest_client/rest_client.dart';
 import '../../core/services/auth_services.dart';
 
@@ -12,7 +13,7 @@ class GuessRepositoryImpl implements GuessRepository {
 
   @override
   Future<List<GuessModel>> getMyGuesses(String poolId) async {
-    final token = AuthService.getUserAccessToken();
+    final token = Get.find<AuthService>().getUserAccessToken();
 
     final response = await _restClient.get("/pools/$poolId/games", headers: {
       'Content-Type': 'application/json',
@@ -21,7 +22,7 @@ class GuessRepositoryImpl implements GuessRepository {
 
     if (response.hasError) {
       if (response.statusCode == 401) {
-        AuthService.logout();
+        Get.find<AuthService>().logout();
       }
       log(
         'Erro ao buscar jogos e palpites ${response.body["statusCode"]}',
@@ -44,7 +45,7 @@ class GuessRepositoryImpl implements GuessRepository {
     int firstTeamPoints,
     int secondTeamPoints,
   ) async {
-    final token = AuthService.getUserAccessToken();
+    final token = Get.find<AuthService>().getUserAccessToken();
 
     final response =
         await _restClient.post("/pools/$betId/games/$gameId/guesses", headers: {
@@ -57,7 +58,7 @@ class GuessRepositoryImpl implements GuessRepository {
 
     if (response.hasError) {
       if (response.statusCode == 401) {
-        AuthService.logout();
+        Get.find<AuthService>().logout();
       }
       log(
         'Erro ao enviar palpite ${response.body["statusCode"]}',

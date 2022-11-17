@@ -1,4 +1,6 @@
 import 'dart:developer';
+import 'package:get/get.dart';
+
 import '../../core/rest_client/rest_client.dart';
 import '../../core/services/auth_services.dart';
 import 'find_repository.dart';
@@ -11,7 +13,7 @@ class FindRepositoryImpl implements FindRepository {
 
   @override
   Future<String> joinBet(String code) async {
-    final token = AuthService.getUserAccessToken();
+    final token = Get.find<AuthService>().getUserAccessToken();
 
     final response = await _restClient.post("/pools/join", headers: {
       'Content-Type': 'application/json',
@@ -22,15 +24,13 @@ class FindRepositoryImpl implements FindRepository {
 
     if (response.hasError) {
       if (response.statusCode == 401) {
-        AuthService.logout();
+        Get.find<AuthService>().logout();
       }
       log(
         'Erro ao entrar no bolão ${response.body["statusCode"]}',
         error: response.statusText,
         stackTrace: StackTrace.current,
       );
-
-      AuthService.logout();
 
       throw RestClientException(response.body["message"]);
     }

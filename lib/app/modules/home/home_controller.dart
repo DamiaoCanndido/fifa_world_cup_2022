@@ -18,7 +18,7 @@ class HomeController extends GetxController {
   set setTabIndex(int index) {
     _tabIndex(index);
     if (_tabs[index] == Constants.LOGOUT) {
-      AuthService.logout();
+      Get.find<AuthService>().logout();
     } else {
       Get.toNamed(_tabs[index], id: NAVIGATOR_KEY);
     }

@@ -23,15 +23,6 @@ class SignInController extends GetxController with LoaderMixin {
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    final user = AuthService.getUserAccessToken();
-    if (user != null) {
-      Get.offNamed(Constants.HOME);
-    }
-    super.onReady();
-  }
-
   Future<void> signIn() async {
     try {
       final user = await GoogleSignInAPI.login();
@@ -49,10 +40,8 @@ class SignInController extends GetxController with LoaderMixin {
       Get.offNamed(Constants.HOME);
     } on RestClientException catch (e, s) {
       log(e.message, error: e, stackTrace: s);
-      AuthService.logout();
     } catch (e, s) {
       log("Erro ao logar no google", error: e, stackTrace: s);
-      AuthService.logout();
     }
   }
 }
