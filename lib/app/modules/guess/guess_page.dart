@@ -5,6 +5,7 @@ import 'package:fwc_2022/app/core/ui/widgets/guesses_list.dart';
 import 'package:fwc_2022/app/core/ui/widgets/ranking_list.dart';
 import 'package:fwc_2022/app/modules/guess/guess_controller.dart';
 import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
 
 class GuessPage extends GetView<GuessController> {
   const GuessPage({super.key});
@@ -20,7 +21,9 @@ class GuessPage extends GetView<GuessController> {
             padding: const EdgeInsets.only(right: 16),
             child: InkWell(
               child: const Icon(Icons.share),
-              onTap: () {},
+              onTap: () async {
+                await Share.share(controller.betModel.code);
+              },
             ),
           )
         ],

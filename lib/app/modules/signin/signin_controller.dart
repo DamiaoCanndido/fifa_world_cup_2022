@@ -6,7 +6,6 @@ import 'package:fwc_2022/app/core/ui/mixins/loader.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import '../../core/rest_client/rest_client.dart';
-import '../../core/services/auth_services.dart';
 import '../../repository/auth/auth_repository.dart';
 
 class SignInController extends GetxController with LoaderMixin {
