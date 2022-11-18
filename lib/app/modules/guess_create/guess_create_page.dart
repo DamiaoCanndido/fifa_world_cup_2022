@@ -1,22 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fwc_2022/app/core/ui/fwc_state.dart';
 import 'package:fwc_2022/app/core/ui/widgets/fwc_appbar.dart';
 import 'package:fwc_2022/app/modules/guess_create/guess_create_controller.dart';
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import '../../core/services/team_services.dart';
 import '../../core/ui/widgets/fwc_button.dart';
 import '../../core/ui/widgets/fwc_textformfield.dart';
 
-class GueessCreate extends GetView<GuessCreateController> {
-  const GueessCreate({super.key});
+class GuessCreate extends StatefulWidget {
+  const GuessCreate({super.key});
+
+  @override
+  State<GuessCreate> createState() => _GueessCreateState();
+}
+
+class _GueessCreateState extends FWCState<GuessCreate, GuessCreateController> {
+  final _formKey = GlobalKey<FormState>();
+  final _firstTeamPointsEC = TextEditingController();
+  final _secondTeamPointsEC = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
-    final _firstTeamPointsEC = TextEditingController();
-    final _secondTeamPointsEC = TextEditingController();
-
     return Scaffold(
       appBar: FWCAppBar(
         centerTitle: false,
@@ -142,5 +147,12 @@ class GueessCreate extends GetView<GuessCreateController> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _firstTeamPointsEC.dispose();
+    _secondTeamPointsEC.dispose();
+    super.dispose();
   }
 }

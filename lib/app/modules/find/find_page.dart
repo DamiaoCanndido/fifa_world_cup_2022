@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:fwc_2022/app/core/ui/fwc_state.dart';
 import 'package:fwc_2022/app/core/ui/widgets/fwc_appbar.dart';
 import 'package:fwc_2022/app/core/ui/widgets/fwc_button.dart';
 import 'package:fwc_2022/app/core/ui/widgets/fwc_textformfield.dart';
 import 'package:fwc_2022/app/modules/find/find_controller.dart';
-import 'package:get/get.dart';
 
-class FindPage extends GetView<FindController> {
+class FindPage extends StatefulWidget {
   const FindPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
-    final _codeEC = TextEditingController();
+  State<FindPage> createState() => _FindPageState();
+}
 
+class _FindPageState extends FWCState<FindPage, FindController> {
+  final _formKey = GlobalKey<FormState>();
+  final _codeEC = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: FWCAppBar(
         centerTitle: true,
@@ -68,5 +73,11 @@ class FindPage extends GetView<FindController> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _codeEC.dispose();
   }
 }

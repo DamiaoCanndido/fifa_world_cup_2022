@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fwc_2022/app/core/ui/fwc_state.dart';
 import 'package:fwc_2022/app/core/ui/widgets/fwc_button.dart';
 import 'package:fwc_2022/app/core/ui/widgets/fwc_textformfield.dart';
 import 'package:fwc_2022/app/modules/new_bet/new_bet_controller.dart';
-import 'package:get/get.dart';
 
-class NewBetPage extends GetView<NewBetController> {
+class NewBetPage extends StatefulWidget {
   const NewBetPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
-    final _newBetEC = TextEditingController();
+  State<NewBetPage> createState() => _NewBetPageState();
+}
 
+class _NewBetPageState extends FWCState<NewBetPage, NewBetController> {
+  final _formKey = GlobalKey<FormState>();
+  final _newBetEC = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         margin: const EdgeInsets.all(16),
@@ -78,5 +83,11 @@ class NewBetPage extends GetView<NewBetController> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _newBetEC.dispose();
   }
 }

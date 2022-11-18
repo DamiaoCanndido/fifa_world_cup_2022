@@ -70,9 +70,9 @@ class RankingList extends GetView<GuessController> {
                         color: Colors.yellow,
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: const Center(
+                      child: Center(
                         child: Text(
-                          "1°",
+                          "${index + 1}°",
                           textAlign: TextAlign.center,
                         ),
                       ),

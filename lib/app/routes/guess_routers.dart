@@ -16,7 +16,7 @@ class GuessRouters {
     ),
     GetPage(
       name: Constants.GUESS_CREATE,
-      page: () => const GueessCreate(),
+      page: () => const GuessCreate(),
       binding: GuessCreateBinding(),
     )
   ];
