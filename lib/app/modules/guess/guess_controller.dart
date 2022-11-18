@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../core/ui/mixins/message.dart';
 import '../../models/bet_model.dart';
 import '../../models/guess_model.dart';
+import '../../models/rank_model.dart';
 import '../../repository/guess/guess_repository.dart';
 
 class GuessController extends GetxController with LoaderMixin, MessagesMixin {
@@ -16,6 +17,8 @@ class GuessController extends GetxController with LoaderMixin, MessagesMixin {
   BetModel get betModel => _betModel.value;
 
   final guesses = <GuessModel>[].obs;
+  final ranking = <RankModel>[].obs;
+
   final _loading = false.obs;
   final _message = Rxn<MessageModel>();
 
@@ -36,6 +39,7 @@ class GuessController extends GetxController with LoaderMixin, MessagesMixin {
     try {
       _loading.toggle();
       getMyGuesses();
+      getRank();
       _loading.toggle();
     } catch (e, s) {
       _loading.toggle();
@@ -50,6 +54,11 @@ class GuessController extends GetxController with LoaderMixin, MessagesMixin {
   Future<void> getMyGuesses() async {
     final allGuesses = await _guessRepository.getMyGuesses(betModel.id);
     guesses.assignAll(allGuesses);
+  }
+
+  Future<void> getRank() async {
+    final allRanking = await _guessRepository.getRank(betModel.id);
+    ranking.assignAll(allRanking);
   }
 
   void setActivePageGuess() {

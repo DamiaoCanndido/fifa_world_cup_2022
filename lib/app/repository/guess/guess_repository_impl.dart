@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:fwc_2022/app/models/guess_model.dart';
+import 'package:fwc_2022/app/models/rank_model.dart';
 import 'package:fwc_2022/app/repository/guess/guess_repository.dart';
 import 'package:get/get.dart';
 import '../../core/rest_client/rest_client.dart';
@@ -70,5 +71,32 @@ class GuessRepositoryImpl implements GuessRepository {
     }
 
     return "Palpite enviado com sucesso!";
+  }
+
+  @override
+  Future<List<RankModel>> getRank(String poolId) async {
+    final token = Get.find<AuthService>().getUserAccessToken();
+
+    final response = await _restClient.get("/pools/$poolId/rank", headers: {
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer $token",
+    });
+
+    if (response.hasError) {
+      if (response.statusCode == 401) {
+        Get.find<AuthService>().logout();
+      }
+      log(
+        'Erro ao buscar ranking ${response.body["statusCode"]}',
+        error: response.statusText,
+        stackTrace: StackTrace.current,
+      );
+
+      throw RestClientException(response.body["error"]);
+    }
+
+    return response.body
+        .map<RankModel>((rank) => RankModel.fromMap(rank))
+        .toList();
   }
 }

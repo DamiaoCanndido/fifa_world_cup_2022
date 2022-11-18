@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fwc_2022/app/modules/guess/guess_controller.dart';
+import 'package:get/get.dart';
 
-class RankingList extends StatelessWidget {
+class RankingList extends GetView<GuessController> {
   const RankingList({super.key});
 
   @override
@@ -10,8 +12,9 @@ class RankingList extends StatelessWidget {
       child: ListView.builder(
         primary: true,
         shrinkWrap: true,
-        itemCount: 50,
+        itemCount: controller.ranking.length,
         itemBuilder: (context, index) {
+          final rank = controller.ranking[index];
           return Container(
             margin: const EdgeInsets.all(8),
             color: const Color.fromARGB(255, 49, 48, 48),
@@ -22,9 +25,9 @@ class RankingList extends StatelessWidget {
                   height: 100,
                   width: 100,
                   padding: const EdgeInsets.all(16),
-                  child: CircleAvatar(
+                  child: ClipOval(
                     child: Image.network(
-                      "https://upload.wikimedia.org/wikipedia/pt/3/31/Spain_National_Football_Team_badge.png",
+                      rank.user.avatarUrl,
                       fit: BoxFit.contain,
                       filterQuality: FilterQuality.high,
                     ),
@@ -35,20 +38,20 @@ class RankingList extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
-                        "Nergal",
-                        style: TextStyle(
+                        rank.user.name,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 20,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
-                        "10 ponto(s)",
-                        style: TextStyle(
+                        "${rank.points.toString()} ponto(s)",
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 14,
                         ),
