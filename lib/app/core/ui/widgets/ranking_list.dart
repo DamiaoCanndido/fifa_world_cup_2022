@@ -41,9 +41,10 @@ class RankingList extends GetView<GuessController> {
                     children: [
                       Text(
                         rank.user.name,
+                        overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                           color: Colors.white,
-                          fontSize: 20,
+                          fontSize: 16,
                         ),
                       ),
                       const SizedBox(
@@ -53,7 +54,7 @@ class RankingList extends GetView<GuessController> {
                         "${rank.points.toString()} ponto(s)",
                         style: const TextStyle(
                           color: Colors.white,
-                          fontSize: 14,
+                          fontSize: 13,
                         ),
                       ),
                     ],

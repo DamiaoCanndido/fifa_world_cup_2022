@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fwc_2022/app/core/ui/widgets/fwc_appbar.dart';
-import 'package:fwc_2022/app/core/ui/widgets/get_detail.dart';
 import 'package:fwc_2022/app/core/ui/widgets/guesses_list.dart';
 import 'package:fwc_2022/app/core/ui/widgets/ranking_list.dart';
 import 'package:fwc_2022/app/modules/guess/guess_controller.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
+
+import '../../core/ui/widgets/bet_detail.dart';
 
 class GuessPage extends GetView<GuessController> {
   const GuessPage({super.key});
@@ -31,7 +32,7 @@ class GuessPage extends GetView<GuessController> {
       body: Obx(
         () => Stack(
           children: [
-            GetDetail(
+            BetDetail(
               betModel: controller.betModel,
             ),
             Container(

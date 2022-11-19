@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fwc_2022/app/core/constants/constants.dart';
 import 'package:fwc_2022/app/core/ui/widgets/empty_lists.dart';
-import 'package:fwc_2022/app/core/ui/widgets/get_detail.dart';
 import 'package:fwc_2022/app/modules/my_bet/my_bet_controller.dart';
 import 'package:get/get.dart';
+import '../../core/ui/widgets/bet_detail.dart';
 import '../../core/ui/widgets/fwc_button.dart';
 
 class MyBetPage extends GetView<MyBetController> {
@@ -39,7 +39,7 @@ class MyBetPage extends GetView<MyBetController> {
                         itemCount: controller.bets.length,
                         itemBuilder: (context, index) {
                           final myBets = controller.bets[index];
-                          return GetDetail(
+                          return BetDetail(
                             betModel: myBets,
                             navigate: () {
                               Get.toNamed(
